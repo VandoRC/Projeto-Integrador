@@ -1,0 +1,73 @@
+{
+    // Use o IntelliSense para saber mais sobre os atributos possíveis.
+    // Focalizar para exibir as descrições dos atributos existentes.
+    // Para obter mais informações, acesse: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Iniciar o Chrome em relação a localhost",
+            "url": "http://localhost:8080",
+            "webRoot": "${workspaceFolder}"
+        }
+    ]
+}<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendamento de Equipamentos</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background-color: #f5f5f5; }
+    h1, h2 { text-align: center; }
+    input, select, button { display: block; margin: 10px 0; padding: 8px; width: 100%; }
+    .equipamento { padding: 10px; background: #fff; border-bottom: 1px solid #ccc; }
+  </style>
+</head>
+<body>
+  <h1>ESCOLA XYZ</h1>
+  <h2>Agendamento de Equipamentos</h2>
+
+  <label for="data">Data:</label>
+  <input type="date" id="data">
+
+  <label for="hora">Hora:</label>
+  <input type="text" id="hora" value="14:00 - 15:30">
+
+  <label for="professor">Professor:</label>
+  <input type="text" id="professor">
+
+  <label for="turma">Turma:</label>
+  <input type="text" id="turma">
+
+  <h3>Equipamentos</h3>
+  <div id="equipamentos"></div>
+
+  <button onclick="confirmarReserva()">Confirmar Reserva</button>
+
+  <script>
+    const equipamentos = [
+      { id: '1', nome: 'Computador Lab 1', status: 'Livre' },
+      { id: '2', nome: 'Tablet Sala 2', status: 'Ocupado' }
+    ];
+
+    const container = document.getElementById('equipamentos');
+    equipamentos.forEach(e => {
+      const div = document.createElement('div');
+      div.className = 'equipamento';
+      div.textContent = `${e.nome} - ${e.status}`;
+      container.appendChild(div);
+    });
+
+    function confirmarReserva() {
+      const data = document.getElementById('data').value;
+      const hora = document.getElementById('hora').value;
+      const professor = document.getElementById('professor').value;
+      const turma = document.getElementById('turma').value;
+
+      alert(`Reserva confirmada para ${professor} - ${turma} em ${data} às ${hora}`);
+    }
+  </script>
+</body>
+</html>
